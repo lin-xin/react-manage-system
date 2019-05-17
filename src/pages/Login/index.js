@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
-import { Form, Input, Button } from 'element-react';
+import { Form, Input, Button, Message } from 'element-react';
 import styles from './index.module.css';
 
 class Login extends Component{
@@ -30,14 +30,14 @@ class Login extends Component{
                         label-width="0px" 
                         className={styles.msContent}
                     >
-                        <Form.Item>
-                            <Input 
+                        <Form.Item prop="username">
+                            <Input
                                 value={this.state.loginForm.username} 
                                 prepend={<Button icon="lx-people"></Button>} 
                                 onChange={this.onChange.bind(this, 'username')}
                             />
                         </Form.Item>
-                        <Form.Item>
+                        <Form.Item prop="password">
                             <Input 
                                 type="password"
                                 value={this.state.loginForm.password} 
@@ -58,16 +58,18 @@ class Login extends Component{
         this.setState({
             loginForm: Object.assign({}, this.state.loginForm, { [key]: value })
         });
-        console.log(this.state.loginForm);
     }
     onSubmit(e){
         e.preventDefault();
         this.refs.loginForm.validate((valid) => {
             if (valid) {
                 localStorage.setItem('ms_username',this.state.loginForm.username);
-                this.props.history.push('/main/icons')
+                this.props.history.push('/main/dashboard');
             } else {
-                console.log('error submit!!');
+                Message({
+                    type: 'error',
+                    message: '登录失败!'
+                });
                 return false;
             }
         });
