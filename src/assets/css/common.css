@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body,#root{
+    height: 100%;
+}
+body {
+    font-family: 'PingFang SC', "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+}
+
+a {
+    text-decoration: none
+}
+
+ul,li{
+    list-style: none;
+}
+
+[class*=" el-icon-lx"], [class^=el-icon-lx] {
+    font-family: lx-iconfont!important;
+}
+
+.container {
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.crumbs {
+    margin: 10px 0;
+}
+
+.pagination {
+    margin: 20px 0;
+    text-align: right;
+}

@@ -1,0 +1,35 @@
+.exampleP{
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+.searchBox{
+    text-align: center;
+    margin-top: 10px;
+}
+.search{
+    width: 300px;
+}
+
+.iconLi{
+    display: inline-block;
+    padding: 10px;
+    width: 120px;
+    height: 120px;
+}
+.iconLiContent{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.iconLiContent i{
+    font-size: 36px;
+    color: #606266;
+}
+.iconLiContent span{
+    margin-top: 10px;
+    color: #787878;
+}

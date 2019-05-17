@@ -1,0 +1,99 @@
+.el-row {
+    margin-bottom: 20px;
+}
+
+.gridContent {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.gridContRight {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+}
+
+.gridNum {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.gridConIcon {
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+}
+
+.gridCon1 .gridConIcon {
+    background: rgb(45, 140, 240);
+}
+
+.gridCon1 .gridNum {
+    color: rgb(45, 140, 240);
+}
+
+.gridCon2 .gridConIcon {
+    background: rgb(100, 213, 114);
+}
+
+.gridCon2 .gridNum {
+    color: rgb(45, 140, 240);
+}
+
+.gridCon3 .gridConIcon {
+    background: rgb(242, 94, 67);
+}
+
+.gridCon3 .gridNum {
+    color: rgb(242, 94, 67);
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.userAvator {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.userInfoCont {
+    padding-left: 50px;
+    flex: 1;
+    font-size: 14px;
+    color: #999;
+}
+
+.userInfoCont div:first-child {
+    font-size: 30px;
+    color: #222;
+}
+
+.userInfoList {
+    font-size: 14px;
+    color: #999;
+    line-height: 25px;
+}
+
+.userInfoList span {
+    margin-left: 70px;
+}
+
+.mgb20 {
+    margin-bottom: 20px;
+}
+
+.schart {
+    width: 100%;
+    height: 300px;
+}

@@ -1,0 +1,22 @@
+.handleBox {
+    margin-bottom: 20px;
+}
+
+.handleSelect {
+    width: 120px;
+}
+
+.handleInput {
+    width: 300px;
+    display: inline-block;
+}
+.table{
+    width: 100%;
+    font-size: 14px;
+}
+.red{
+    color: #ff0000;
+}
+.mr10{
+    margin-right: 10px;
+}
