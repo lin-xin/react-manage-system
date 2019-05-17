@@ -6,6 +6,7 @@
     font-size: 22px;
     color: #fff;
     background-color: #242f42;
+    z-index: 999;
 }
 .collapseBtn{
     float: left;
