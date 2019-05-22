@@ -1823,6 +1823,11 @@ babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
+babel-core@7.0.0-bridge.0:
+  version "7.0.0-bridge.0"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
+  integrity sha512-poPX9mZH/5CSanm50Q+1toVci6pv5KSRv/5TWCwtzQS5XEwn40BcCrgIeMFWP9CKKIniKXNxoIOnOq4VVlGXhg==
+
 babel-eslint@10.0.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
@@ -2798,6 +2803,11 @@ create-react-context@^0.2.2:
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
+
+cropperjs@v1.0.0-rc.3:
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.0.0-rc.3.tgz#50a7c7611befc442702f845ede77d7df4572e82b"
+  integrity sha512-3w3Rg95zHeVSAidvsoCzkYo9IycuTkU7pdP+lckQg2PY72HnFjj4JtS1L4sPumVzOU++e14BYp20ZbVczvVN1Q==
 
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
@@ -7941,7 +7951,7 @@ prompts@^2.0.1:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8117,6 +8127,15 @@ react-click-outside@^3.0.1:
   integrity sha512-d0KWFvBt+esoZUF15rL2UBB7jkeAqLU8L/Ny35oLK6fW6mIbOv/ChD+ExF4sR9PD26kVx+9hNfD0FTIqRZEyRQ==
   dependencies:
     hoist-non-react-statics "^2.1.1"
+
+react-cropper@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-cropper/-/react-cropper-1.2.0.tgz#f0e51adbf4bdc91b19d0c766e8b7d87d89057a47"
+  integrity sha512-Ubg7tb6eCfbOSpXx7G07uRD/GTy2H9gF1K1Dz7/Jo8kHux1uMiy8uy9DSuU6UxEDXGsedNDx1TibbjC23yPpTg==
+  dependencies:
+    babel-core "7.0.0-bridge.0"
+    cropperjs v1.0.0-rc.3
+    prop-types "^15.5.8"
 
 react-dev-utils@^9.0.1:
   version "9.0.1"

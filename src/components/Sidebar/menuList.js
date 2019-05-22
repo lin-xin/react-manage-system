@@ -27,6 +27,10 @@ export default [
             {
                 index: 'forms',
                 title: '基础表单'
+            },
+            {
+                index: 'upload',
+                title: '上传组件'
             }
         ]
     }
