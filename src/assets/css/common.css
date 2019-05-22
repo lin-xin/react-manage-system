@@ -40,3 +40,6 @@ ul,li{
 .el-breadcrumb__item:last-child .el-breadcrumb__item__inner{
     color: #606266;
 }
+.el-message{
+    z-index: 999;
+}
