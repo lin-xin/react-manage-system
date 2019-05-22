@@ -26,10 +26,12 @@ class Header extends Component{
                                 </div>
                             </Tooltip>
                             <Tooltip effect="dark" content={'消息中心'} placement="bottom">
-                                <div className={styles.btnBell}>
-                                    <i className="el-icon-lx-notice"></i>
-                                    <span className={styles.btnBellBadge}></span>
-                                </div>
+                                <Link to="tabs">
+                                    <div className={styles.btnBell}>
+                                        <i className="el-icon-lx-notice"></i>
+                                        <span className={styles.btnBellBadge}></span>
+                                    </div>
+                                </Link>
                             </Tooltip>
                         <div className={styles.userAvator}><img src={require('../../assets/img/img.jpg')}/></div>
                         {/* 用户名下拉菜单 */}

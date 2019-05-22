@@ -5,6 +5,7 @@ const Main = lazy(() => import('./pages/Main/index'));
 const Icons = lazy(() => import('./pages/Icons/index'));
 const Tables = lazy(() => import('./pages/Tables/index'));
 const Dashboard = lazy(() => import('./pages/Dashboard/index'));
+const Tabs = lazy(() => import('./pages/Tabs/index'));
 
 export const AppRoutes = () => {
     return (
@@ -27,6 +28,7 @@ export const MainRoutes = () => {
             <Route path="/main/dashboard" component={Dashboard} />
             <Route path="/main/icons" component={Icons} />
             <Route path="/main/tables" component={Tables} />
+            <Route path="/main/tabs" component={Tabs} />
         </Switch>
     )
 }

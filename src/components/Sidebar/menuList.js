@@ -13,5 +13,10 @@ export default [
         icon: 'el-icon-lx-emoji',
         index: 'icons',
         title: '自定义图标'
+    },
+    {
+        icon: 'el-icon-lx-copy',
+        index: 'tabs',
+        title: 'tab选项卡'
     }
 ]

@@ -37,3 +37,6 @@ ul,li{
     margin: 20px 0;
     text-align: right;
 }
+.el-breadcrumb__item:last-child .el-breadcrumb__item__inner{
+    color: #606266;
+}

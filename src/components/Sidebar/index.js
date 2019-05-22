@@ -7,15 +7,13 @@ import './index.css';
 class Sidebar extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            curActive: this.props.history.location.pathname.replace('/main/','')
-        }
     }
     render(){
+        const { history } = this.props;
         return (
             <div className="sidebar">
                 <Menu 
-                    defaultActive={this.state.curActive}
+                    defaultActive={history.location.pathname.replace('/main/','')}
                     theme="dark"
                     onSelect={this.onMenuSelect.bind(this)}
                 >
@@ -77,9 +75,6 @@ class Sidebar extends Component{
         )
     }
     onMenuSelect(e){
-        this.setState({
-            curActive: e
-        })
         this.props.history.push(e);
     }
 }
