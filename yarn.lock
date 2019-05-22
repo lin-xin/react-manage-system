@@ -8743,6 +8743,11 @@ saxes@^3.1.9:
   dependencies:
     xmlchars "^1.3.1"
 
+schart.js@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/schart.js/-/schart.js-2.0.1.tgz#ec9a589e93ddabf9708c0f8ed237dc86248ab5da"
+  integrity sha512-HYQzRxuccW+z3152zMC0tP2WBcZK9z/dUkh7a/jn9Q3RrXIbxc6ElFTTEud5/bc2bLQ6RvYlJDgGWdTtIyKxuQ==
+
 scheduler@^0.13.6:
   version "0.13.6"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.6.tgz#466a4ec332467b31a91b9bf74e5347072e4cd889"

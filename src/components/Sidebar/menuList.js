@@ -33,5 +33,10 @@ export default [
                 title: '上传组件'
             }
         ]
+    },
+    {
+        icon: 'el-icon-lx-rank',
+        index: 'charts',
+        title: 'schart图表'
     }
 ]
