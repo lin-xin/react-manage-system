@@ -1,47 +1,51 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 import { Menu } from 'element-react';
+import menuList from './menuList'
 import './index.css';
 
-const sidebarData = [
-    {
-        icon: 'el-icon-lx-cascades',
-        index: 'dashboard',
-        title: 'Dashboard'
-    },
-    {
-        icon: 'el-icon-lx-cascades',
-        index: 'tables',
-        title: '基础表格'
-    },
-    {
-        icon: 'el-icon-lx-emoji',
-        index: 'icons',
-        title: '自定义图标'
-    }
-]
 class Sidebar extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            curActive: this.props.history.location.pathname.replace('/main/','')
-        }
     }
     render(){
+        const { history } = this.props;
         return (
             <div className="sidebar">
-                <Menu defaultActive={this.state.curActive} theme="dark" className="el-menu-vertical-demo" onSelect={this.onMenuSelect.bind(this)}>
+                <Menu 
+                    defaultActive={history.location.pathname.replace('/main/','')}
+                    theme="dark"
+                    onSelect={this.onMenuSelect.bind(this)}
+                >
                 {
-                    sidebarData.map((items) => {
+                    // 遍历一级菜单
+                    menuList.map((items) => {
+                        // 如果有子菜单，则再对子菜单进行遍历渲染
                         if(items.subs){
                             return (
-                                <Menu.SubMenu key={items.index} index={items.index} title={<span><i className={items.icon}></i>{items.title}</span>}>
+                                <Menu.SubMenu
+                                    key={items.index} 
+                                    index={items.index} 
+                                    title={
+                                        <span>
+                                            <i className={items.icon}></i>
+                                            {items.title}
+                                        </span>
+                                    }
+                                >
                                     {
+                                        // 遍历二级菜单
                                         items.subs.map((item) => {
+                                            // 如果有子菜单，则再对子菜单进行遍历渲染
                                             if(item.subs){
                                                 return (
-                                                    <Menu.SubMenu key={item.index} index={item.index} title={<span>{item.title}</span>}>
+                                                    <Menu.SubMenu
+                                                        key={item.index}
+                                                        index={item.index}
+                                                        title={<span>{item.title}</span>}
+                                                    >
                                                         {
+                                                            // 遍历三级菜单，最多支持三级
                                                             item.subs.map((sub) => {
                                                                 return <Menu.Item key={sub.index} index={sub.index}>{sub.title}</Menu.Item>
                                                             })
@@ -56,7 +60,13 @@ class Sidebar extends Component{
                                 </Menu.SubMenu>
                             )
                         }else{
-                            return <Menu.Item key={items.index} index={items.index}><i className={items.icon}></i>{items.title}</Menu.Item>
+                            return <Menu.Item
+                                    key={items.index}
+                                    index={items.index}
+                                >
+                                    <i className={items.icon}></i>
+                                    {items.title}
+                                </Menu.Item>
                         }
                     })
                 }
@@ -65,9 +75,6 @@ class Sidebar extends Component{
         )
     }
     onMenuSelect(e){
-        this.setState({
-            curActive: e
-        })
         this.props.history.push(e);
     }
 }

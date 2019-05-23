@@ -3,6 +3,7 @@ import { Table, Button, Breadcrumb, Pagination, Select, Input, Message } from 'e
 import styles from './index.module.css';
 import DeleteDialog from './deleteDialog';
 import EditDialog from './editDialog';
+import { request } from '../../utils/utils';
 
 class Tables extends Component{
     constructor(props){
@@ -11,6 +12,8 @@ class Tables extends Component{
             idx: -1,
             editVisible: false,
             delVisible: false,
+            screenAddress: '',
+            screenName: '',
             columns: [
                 {
                     type: 'selection'
@@ -43,13 +46,8 @@ class Tables extends Component{
                     }
                 }
             ],
-            data: [
-                {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }
-            ]
+            data: [],
+            tableList: []
         }
     }
     render(){
@@ -63,23 +61,40 @@ class Tables extends Component{
                 <div className="container">
                     <div className={styles.handleBox}>
                         <Button type="primary" icon="delete" className={`${styles.handleDle} ${styles.mr10}`}>批量删除</Button>
-                        <Select v-model="select_cate" placeholder="筛选省份" className={`${styles.handleSelect} ${styles.mr10}`}>
+                        <Select
+                            value={this.state.screenName} 
+                            placeholder="筛选省份" 
+                            clearable={true}
+                            className={`${styles.handleSelect} ${styles.mr10}`}
+                            onChange={this.handleChangeSelect.bind(this)}
+                        >
+                            <Select.Option key="0" label="请选择" value=""></Select.Option>
                             <Select.Option key="1" label="广东省" value="广东省"></Select.Option>
                             <Select.Option key="2" label="湖南省" value="湖南省"></Select.Option>
                         </Select>
-                        <Input v-model="select_word" placeholder="筛选关键词" className={`${styles.handleInput} ${styles.mr10}`}></Input>
-                        <Button type="primary" icon="search">搜索</Button>
+                        <Input 
+                            placeholder="筛选关键词"
+                            className={`${styles.handleInput} ${styles.mr10}`}
+                            onChange={this.handleChangeInput.bind(this)}
+                        />
+                        <Button type="primary" icon="search" onClick={this.filterData.bind(this)}>搜索</Button>
                     </div>
                     <Table
                         style={{width: '100%'}}
                         columns={this.state.columns}
-                        data={this.state.data}
+                        data={this.state.tableList}
                         border={true}
                         onSelectChange={(selection) => { console.log(selection) }}
                         onSelectAll={(selection) => { console.log(selection) }}
                     />
                     <div className="pagination">
-                        <Pagination layout="prev, pager, next" total={50} small={true}/>
+                        <Pagination
+                            layout="prev, pager, next"
+                            total={50}
+                            pageSize={10}
+                            small={true}
+                            onCurrentChange={this.handlePages.bind(this)}
+                        />
                     </div>
                 </div>
                 <DeleteDialog 
@@ -96,18 +111,45 @@ class Tables extends Component{
             </div>
         )
     }
+    componentWillMount(){
+        this.getData();
+    }
+    // 获取列表数据
+    getData(idx){
+        request('/ms/table/list', {
+            method: 'post',
+            body: JSON.stringify({page: idx||1})
+        }).then(res => {
+            this.setState({
+                data: res.list
+            })
+            this.filterData();
+        })
+    }
+    // 筛选列表数据
+    filterData(){
+        const data = this.state.data.filter(item => {
+            return item.address.indexOf(this.state.screenAddress) > -1 && item.name.indexOf(this.state.screenName) > -1
+        })
+        this.setState({
+            tableList: data
+        })
+    }
+    // 触发编辑操作
     handleEdit(index){
         this.setState({
             idx: index,
             editVisible: true
         })
     }
+    // 触发删除操作
     handleDel(index) {
         this.setState({
             idx: index,
             delVisible: true
         })
     }
+    // dialog取消操作
     handleCancel(){
         this.setState({
             delVisible: false,
@@ -115,6 +157,7 @@ class Tables extends Component{
             idx: -1
         })
     }
+    // 删除当前行
     deleteRow(){
         const data = [...this.state.data];
         data.splice(this.state.idx, 1);
@@ -128,6 +171,7 @@ class Tables extends Component{
             type: 'success'
         });
     }
+    // 编辑修改当前行
     editRow(param){
         const data = [...this.state.data];
         data[this.state.idx] = param;
@@ -140,6 +184,23 @@ class Tables extends Component{
             message: '修改成功',
             type: 'success'
         });
+    }
+    // 切换页面
+    handlePages(e){
+        this.getData(e);
+    }
+    // 筛选省份
+    handleChangeSelect(e){
+        this.setState({
+            screenAddress: e
+        })
+    }
+    // 筛选姓名
+    handleChangeInput(e){
+        console.log(e);
+        this.setState({
+            screenName: e
+        })
     }
 }
 
