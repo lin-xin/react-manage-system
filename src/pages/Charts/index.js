@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { Breadcrumb } from 'element-react';
-import SCharts from './schart';
+import { Breadcrumb } from 'antd';
+import SCharts from '../../components/Schart';
+import IconFont from '../../components/IconFont';
 
 class Charts extends Component{
     constructor(props){
@@ -58,13 +59,13 @@ class Charts extends Component{
             <div>
                 <div className="crumbs">
                     <Breadcrumb separator="/">
-                        <Breadcrumb.Item><i className="el-icon-lx-rank"></i> schart图表</Breadcrumb.Item>
+                        <Breadcrumb.Item><IconFont type="anticon-lx-rank" /> schart图表</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                 <div className="container">
                     <div className="plugins-tips">
                         schart.js：基于HTML5 Canvas的小图表库。
-                        访问地址：<a href="https://github.com/lin-xin/sChart.js" target="_blank">schart.js</a>
+                        访问地址：<a href="https://github.com/lin-xin/sChart.js" target="_blank" rel="noopener noreferrer">schart.js</a>
                     </div>
                     <div style={styles.schartBox}>
                         <div style={styles.title}>柱状图</div>

@@ -10,9 +10,11 @@
 }
 .collapseBtn{
     float: left;
-    padding: 0 21px;
+    width: 80px;
+    text-align: center;
     cursor: pointer;
     line-height: 70px;
+    font-size: 26px;
 }
 .header .logo{
     float: left;
@@ -35,11 +37,12 @@
     position: relative;
     width: 30px;
     height: 30px;
+    line-height: 30px;
     text-align: center;
     border-radius: 15px;
     cursor: pointer;
     color: #fff;
-    font-size: 24px;
+    font-size: 26px;
 }
 .btnBellBadge{
     position: absolute;
@@ -69,6 +72,7 @@
 .elDropdownLink{
     color: #fff;
     cursor: pointer;
+    font-size: 16px;
 }
 .dropItemLink{
     text-align: center;

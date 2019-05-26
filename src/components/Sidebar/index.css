@@ -1,7 +1,10 @@
 .sidebar{
-    width: 250px;
+    /* width: 250px; */
     height: 100%;
     overflow-y: scroll;
+}
+.sidebar-collapse{
+    width: auto;
 }
 .sidebar::-webkit-scrollbar{
     width: 0;
@@ -10,9 +13,6 @@
     height: 100%;
     border-radius: 0;
 }
-.el-menu .el-menu .el-submenu__title{
-    padding: 0 45px;
-}
-.el-menu .el-menu .el-menu .el-menu-item{
-    padding: 0 65px;
+.ant-menu-item .anticon{
+    font-size: 16px;
 }

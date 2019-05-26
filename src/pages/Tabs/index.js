@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Table, Button, Breadcrumb, Tabs } from 'element-react';
+import { Table, Button, Breadcrumb, Tabs } from 'antd';
+import IconFont from '../../components/IconFont';
 
 class MessageTabs extends Component{
     constructor(props){
@@ -7,34 +8,51 @@ class MessageTabs extends Component{
         this.state = {
             columns: {
                 unread: [
-                    { prop: "title", minWidth: 400, render: row => <span style={{cursor:'pointer',color: '#20a0ff'}}>{row.title}</span> },
-                    { prop: "date", width: 220 },
-                    { width: 120, align: 'center', render: (row, column, index) => <Button size="small" onClick={this.handleRead.bind(this, index)}>标为已读</Button> }
+                    { 
+                        dataIndex: "title",
+                        render: (text, row, index) => <span style={{cursor:'pointer',color: '#20a0ff'}}>{row.title}</span> 
+                    },
+                    { dataIndex: "date", width: 220 },
+                    { 
+                        width: 120,
+                        align: 'center',
+                        render: (text, row, index) => <Button size="small" onClick={this.handleRead.bind(this, index)}>标为已读</Button>
+                    }
                 ],
                 read: [
-                    { prop: "title", minWidth: 400, render: row => <span style={{cursor:'pointer',color: '#20a0ff'}}>{row.title}</span> },
-                    { prop: "date", width: 220 },
+                    { 
+                        dataIndex: "title",
+                        render: (text, row, index) => <span style={{cursor:'pointer',color: '#20a0ff'}}>{row.title}</span> 
+                    },
+                    { dataIndex: "date", width: 220 },
                     { width: 120, align: 'center', render: (row, column, index) => <Button type="danger" size="small" onClick={this.handleDelete.bind(this, index)}>删除</Button> }
                 ],
                 recycle: [
-                    { prop: "title", minWidth: 400, render: row => <span style={{cursor:'pointer',color: '#20a0ff'}}>{row.title}</span> },
-                    { prop: "date", width: 220 },
+                    { 
+                        dataIndex: "title",
+                        render: (text, row, index) => <span style={{cursor:'pointer',color: '#20a0ff'}}>{row.title}</span> 
+                    },
+                    { dataIndex: "date", width: 220 },
                     { width: 120, align: 'center', render: (row, column, index) => <Button size="small" onClick={this.handleRestore.bind(this, index)}>还原</Button> }
                 ]
             },
             data: {
                 unread: [{
+                    key: '1',
                     date: '2019-05-22 20:00:00',
                     title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护',
                 },{
+                    key: '2',
                     date: '2019-05-22 21:00:00',
                     title: '今晚12点整发大红包，先到先得',
                 }],
                 read: [{
+                    key: '3',
                     date: '2019-05-22 20:00:00',
                     title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护'
                 }],
                 recycle: [{
+                    key: '4',
                     date: '2019-05-22 20:00:00',
                     title: '该系统将于今晚凌晨2点到5点进行升级维护'
                 }]
@@ -46,44 +64,50 @@ class MessageTabs extends Component{
             <div>
                 <div className="crumbs">
                     <Breadcrumb separator="/">
-                        <Breadcrumb.Item><i className="el-icon-lx-copy"></i> 消息中心</Breadcrumb.Item>
+                        <Breadcrumb.Item><IconFont type="anticon-lx-copy" /> 消息中心</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                 <div className="container">
-                <Tabs activeName="1" onTabClick={ (tab) => console.log(tab.props.name) }>
-                    <Tabs.Pane label={`未读消息(${this.state.data.unread.length})`} name="1">
+                <Tabs>
+                    <Tabs.TabPane tab={`未读消息(${this.state.data.unread.length})`} key="1">
                         <Table 
                             showHeader={false}
                             style={{width: '100%'}}
                             columns={this.state.columns.unread}
-                            data={this.state.data.unread}
+                            dataSource={this.state.data.unread}
+                            pagination={false}
+                            size="middle"
                         />
                         <div style={{marginTop:'30px'}}>
                             <Button type="primary">全部标为已读</Button>
                         </div>
-                    </Tabs.Pane>
-                    <Tabs.Pane label={`已读消息(${this.state.data.read.length})`} name="2">
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab={`已读消息(${this.state.data.read.length})`} key="2">
                         <Table 
                             showHeader={false}
                             style={{width: '100%'}}
                             columns={this.state.columns.read}
-                            data={this.state.data.read}
+                            dataSource={this.state.data.read}
+                            pagination={false}
+                            size="middle"
                         />
                         <div style={{marginTop:'30px'}}>
                             <Button type="danger">删除全部</Button>
                         </div>
-                    </Tabs.Pane>
-                    <Tabs.Pane label={`回收站(${this.state.data.recycle.length})`} name="3">
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab={`回收站(${this.state.data.recycle.length})`} key="3">
                         <Table 
                             showHeader={false}
                             style={{width: '100%'}}
                             columns={this.state.columns.recycle}
-                            data={this.state.data.recycle}
+                            dataSource={this.state.data.recycle}
+                            pagination={false}
+                            size="middle"
                         />
                         <div style={{marginTop:'30px'}}>
                             <Button type="danger">清空回收站</Button>
                         </div>
-                    </Tabs.Pane>
+                    </Tabs.TabPane>
                 </Tabs>
                 </div>
             </div>

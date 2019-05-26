@@ -26,15 +26,17 @@ export const AppRoutes = () => {
 
 export const MainRoutes = () => {
     return (
-        <Switch>
-            <Redirect exact from='/main' to='/main/dashboard'/>
-            <Route path="/main/dashboard" component={Dashboard} />
-            <Route path="/main/icons" component={Icons} />
-            <Route path="/main/tables" component={Tables} />
-            <Route path="/main/tabs" component={Tabs} />
-            <Route path="/main/forms" component={Forms} />
-            <Route path="/main/upload" component={Upload} />
-            <Route path="/main/charts" component={Charts} />
-        </Switch>
+        <Suspense fallback={<div></div>}>
+            <Switch>
+                <Redirect exact from='/main' to='/main/dashboard'/>
+                <Route exact path="/main/dashboard" component={Dashboard} />
+                <Route exact path="/main/icons" component={Icons} />
+                <Route exact path="/main/tables" component={Tables} />
+                <Route exact path="/main/tabs" component={Tabs} />
+                <Route exact path="/main/forms" component={Forms} />
+                <Route exact path="/main/upload" component={Upload} />
+                <Route exact path="/main/charts" component={Charts} />
+            </Switch>
+        </Suspense>
     )
 }

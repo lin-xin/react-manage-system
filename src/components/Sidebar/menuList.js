@@ -1,26 +1,26 @@
 export default [
     {
-        icon: 'el-icon-lx-home',
+        icon: 'anticon-lx-home',
         index: 'dashboard',
         title: 'Dashboard'
     },
     {
-        icon: 'el-icon-lx-cascades',
+        icon: 'anticon-lx-cascades',
         index: 'tables',
         title: '基础表格'
     },
     {
-        icon: 'el-icon-lx-emoji',
+        icon: 'anticon-lx-emoji',
         index: 'icons',
         title: '自定义图标'
     },
     {
-        icon: 'el-icon-lx-copy',
+        icon: 'anticon-lx-copy',
         index: 'tabs',
         title: 'tab选项卡'
     },
     {
-        icon: 'el-icon-lx-calendar',
+        icon: 'anticon-lx-calendar',
         index: '5',
         title: '三级菜单示例',
         subs: [
@@ -35,7 +35,7 @@ export default [
         ]
     },
     {
-        icon: 'el-icon-lx-rank',
+        icon: 'anticon-lx-rank',
         index: 'charts',
         title: 'schart图表'
     }
