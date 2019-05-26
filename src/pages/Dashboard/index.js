@@ -2,13 +2,62 @@ import React, {Component} from 'react';
 import { Card, Progress, Row, Col } from 'antd';
 import DashboardTodo from './todo.js';
 import IconFont from '../../components/IconFont';
+import SCharts from '../../components/Schart';
 import styles from './index.module.css';
 
 class Dashboard extends Component{
+    state = {
+        data: [
+            {
+                name: '2018/09/04',
+                value: 1083
+            },
+            {
+                name: '2018/09/05',
+                value: 941
+            },
+            {
+                name: '2018/09/06',
+                value: 1139
+            },
+            {
+                name: '2018/09/07',
+                value: 816
+            },
+            {
+                name: '2018/09/08',
+                value: 327
+            },
+            {
+                name: '2018/09/09',
+                value: 228
+            },
+            {
+                name: '2018/09/10',
+                value: 1065
+            }
+        ],
+        options: {
+            title: '最近七天每天的用户访问量',
+            showValue: false,
+            fillColor: 'rgb(45, 140, 240)',
+            bottomPadding: 30,
+            topPadding: 30
+        },
+        options2: {
+            title: '最近七天用户访问趋势',
+            fillColor: '#FC6FA1',
+            axisColor: '#008ACD',
+            contentColor: '#EEEEEE',
+            bgColor: '#F5F8FD',
+            bottomPadding: 30,
+            topPadding: 30
+        }
+    }
     render(){
         return (
             <div>
-                <Row gutter={20}>
+                <Row gutter={20} className={styles.mgb20}>
                     <Col span={8}>
                         <Card hoverable className={styles.mgb20} style={{height:'252px'}}>
                             <div className={styles.userInfo}>
@@ -68,6 +117,22 @@ class Dashboard extends Component{
                         </Row>
                         <Card hoverable style={{height:'403px'}} title="待办事项" extra={<span>添加</span>}>
                             <DashboardTodo/>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row gutter={20}>
+                    <Col span={12}>
+                        <Card hoverable>
+                            <div style={{width: '100%', height: '300px'}}>
+                                <SCharts ref={ref => this.bar = ref} canvasId="bar" data={this.state.data} type="bar" options={this.state.options} />
+                            </div>
+                        </Card>
+                    </Col>
+                    <Col span={12}>
+                        <Card hoverable>
+                            <div style={{width: '100%', height: '300px'}}>
+                                <SCharts ref={ref => this.line = ref} canvasId="line" data={this.state.data} type="line" options={this.state.options2} />
+                            </div>
                         </Card>
                     </Col>
                 </Row>
