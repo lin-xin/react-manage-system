@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import { Layout, Card, Progress, Button } from 'element-react';
+import { Card, Progress, Row, Col } from 'antd';
 import DashboardTodo from './todo.js';
+import IconFont from '../../components/IconFont';
 import styles from './index.module.css';
 
 class Dashboard extends Component{
     render(){
         return (
             <div>
-                <Layout.Row gutter="20">
-                    <Layout.Col span="8">
-                        <Card className={styles.mgb20} style={{height:'252px'}}>
+                <Row gutter={20}>
+                    <Col span={8}>
+                        <Card hoverable className={styles.mgb20} style={{height:'252px'}}>
                             <div className={styles.userInfo}>
                                 <img src={require('../../assets/img/img.jpg')} className={styles.userAvator} alt=""/>
                                 <div className={styles.userInfoCont}>
@@ -17,66 +18,59 @@ class Dashboard extends Component{
                                     <div>管理员</div>
                                 </div>
                             </div>
-                            <div className={styles.userInfoList}>上次登录时间：<span>2018-01-01</span></div>
-                            <div className={styles.userInfoList}>上次登录地点：<span>东莞</span></div>
+                            <div className={styles.userInfoList}>上次登录时间：<span>2019-05-20</span></div>
+                            <div className={styles.userInfoList}>上次登录地点：<span>广东东莞</span></div>
                         </Card>
-                        <Card style={{height:'252px'}} header={<div className="clearfix"><span>语言详情</span></div>}>
+                        <Card hoverable style={{height:'252px'}} title="语言详情">
                             JavaScript
-                            <Progress percentage={71.3} color="#42b983"/>
+                            <Progress percent={71.3} strokeColor="#42b983"/>
                             CSS
-                            <Progress percentage={33.7}/>
+                            <Progress percent={33.7}/>
                             HTML
-                            <Progress percentage={79} color="#f56c6c"/>
-                            HTML
-                            <Progress percentage={59} color="#f56c6c"/>
+                            <Progress percent={79} strokeColor="#f56c6c"/>
                         </Card>
-                    </Layout.Col>
-                    <Layout.Col span="16">
-                        <Layout.Row gutter="20" className={styles.mgb20}>
-                            <Layout.Col span="8">
-                                <Card bodyStyle={{padding:0}}>
+                    </Col>
+                    <Col span={16}>
+                        <Row gutter={20} className={styles.mgb20}>
+                            <Col span={8}>
+                                <Card hoverable bodyStyle={{padding:0}}>
                                     <div className={`${styles.gridContent} ${styles.gridCon1}`}>
-                                        <i className={`el-icon-lx-people ${styles.gridConIcon}`}></i>
+                                        <IconFont type="anticon-lx-people" className={styles.gridConIcon}/>
                                         <div className={styles.gridContRight}>
                                             <div className={styles.gridNum}>1234</div>
                                             <div>用户访问量</div>
                                         </div>
                                     </div>
                                 </Card>
-                            </Layout.Col>
-                            <Layout.Col span="8">
-                                <Card bodyStyle={{padding:0}}>
+                            </Col>
+                            <Col span={8}>
+                                <Card hoverable bodyStyle={{padding:0}}>
                                     <div className={`${styles.gridContent} ${styles.gridCon2}`}>
-                                        <i className={`el-icon-lx-notice ${styles.gridConIcon}`}></i>
+                                        <IconFont type="anticon-lx-notice" className={styles.gridConIcon}/>
                                         <div className={styles.gridContRight}>
                                             <div className={styles.gridNum}>321</div>
                                             <div>系统消息</div>
                                         </div>
                                     </div>
                                 </Card>
-                            </Layout.Col>
-                            <Layout.Col span="8">
-                                <Card bodyStyle={{padding:0}}>
+                            </Col>
+                            <Col span={8}>
+                                <Card hoverable bodyStyle={{padding:0}}>
                                     <div className={`${styles.gridContent} ${styles.gridCon3}`}>
-                                        <i className={`el-icon-lx-goods ${styles.gridConIcon}`}></i>
+                                        <IconFont type="anticon-lx-goods" className={styles.gridConIcon}/>
                                         <div className={styles.gridContRight}>
                                             <div className={styles.gridNum}>5000</div>
                                             <div>数量</div>
                                         </div>
                                     </div>
                                 </Card>
-                            </Layout.Col>
-                        </Layout.Row>
-                        <Card style={{height:'403px'}} header={
-                            <div slot="header" className="clearfix">
-                                <span>待办事项</span>
-                                <Button style={{float:'right',padding:'3px 0'}} type="text">添加</Button>
-                            </div>
-                        }>
+                            </Col>
+                        </Row>
+                        <Card hoverable style={{height:'403px'}} title="待办事项" extra={<span>添加</span>}>
                             <DashboardTodo/>
                         </Card>
-                    </Layout.Col>
-                </Layout.Row>
+                    </Col>
+                </Row>
             </div>
         )
     }

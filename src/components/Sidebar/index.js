@@ -1,21 +1,21 @@
-import React, {Component} from 'react';
-import {withRouter} from "react-router-dom";
-import { Menu } from 'element-react';
+import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
+import { Menu } from 'antd';
 import menuList from './menuList'
+import IconFont from '../IconFont';
 import './index.css';
 
-class Sidebar extends Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
+class Sidebar extends Component {
+    render() {
         const { history } = this.props;
         return (
-            <div className="sidebar">
+            <div className={this.props.collapse ? 'sidebar sidebar-collapse' : 'sidebar'}>
                 <Menu 
-                    defaultActive={history.location.pathname.replace('/main/','')}
+                    defaultSelectedKeys={[history.location.pathname.replace('/main/','')]}
                     theme="dark"
-                    onSelect={this.onMenuSelect.bind(this)}
+                    mode="inline"
+                    inlineCollapsed={this.props.collapse}
+                    onClick={this.onMenuSelect.bind(this)}
                 >
                 {
                     // 遍历一级菜单
@@ -24,12 +24,11 @@ class Sidebar extends Component{
                         if(items.subs){
                             return (
                                 <Menu.SubMenu
-                                    key={items.index} 
-                                    index={items.index} 
+                                    key={items.index}
                                     title={
                                         <span>
-                                            <i className={items.icon}></i>
-                                            {items.title}
+                                            <IconFont className="sidebar-icon" type={items.icon}/>
+                                            <span>{items.title}</span>
                                         </span>
                                     }
                                 >
@@ -41,31 +40,27 @@ class Sidebar extends Component{
                                                 return (
                                                     <Menu.SubMenu
                                                         key={item.index}
-                                                        index={item.index}
                                                         title={<span>{item.title}</span>}
                                                     >
                                                         {
                                                             // 遍历三级菜单，最多支持三级
                                                             item.subs.map((sub) => {
-                                                                return <Menu.Item key={sub.index} index={sub.index}>{sub.title}</Menu.Item>
+                                                                return <Menu.Item key={sub.index}>{sub.title}</Menu.Item>
                                                             })
                                                         }
                                                     </Menu.SubMenu>
                                                 )
                                             }else{
-                                                return <Menu.Item key={item.index} index={item.index}>{item.title}</Menu.Item>
+                                                return <Menu.Item key={item.index}>{item.title}</Menu.Item>
                                             }
                                         })
                                     }
                                 </Menu.SubMenu>
                             )
                         }else{
-                            return <Menu.Item
-                                    key={items.index}
-                                    index={items.index}
-                                >
-                                    <i className={items.icon}></i>
-                                    {items.title}
+                            return <Menu.Item key={items.index}>
+                                    <IconFont className="sidebar-icon" type={items.icon}/>
+                                    <span>{items.title}</span>
                                 </Menu.Item>
                         }
                     })
@@ -75,7 +70,7 @@ class Sidebar extends Component{
         )
     }
     onMenuSelect(e){
-        this.props.history.push(e);
+        this.props.history.push(e.key);
     }
 }
 

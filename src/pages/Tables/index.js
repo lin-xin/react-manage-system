@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import { Table, Button, Breadcrumb, Pagination, Select, Input, Message } from 'element-react';
+import { Table, message, Select, Input, Button, Breadcrumb } from 'antd';
 import styles from './index.module.css';
 import DeleteDialog from './deleteDialog';
 import EditDialog from './editDialog';
+import IconFont from '../../components/IconFont';
 import { request } from '../../utils/utils';
 
 class Tables extends Component{
@@ -16,31 +17,29 @@ class Tables extends Component{
             screenName: '',
             columns: [
                 {
-                    type: 'selection'
-                },
-                {
-                    label: "日期",
-                    prop: "date",
+                    title: "日期",
+                    dataIndex: "date",
                     width: 150
                 },
                 {
-                    label: "姓名",
-                    prop: "name",
+                    title: "姓名",
+                    dataIndex: "name",
                     width: 120
                 },
                 {
-                    label: "地址",
-                    prop: "address"
+                    title: "地址",
+                    dataIndex: "address"
                 },
                 {
-                    label: "操作",
+                    dataIndex: 'handle',
+                    title: "操作",
                     width: 180,
                     align: 'center',
-                    render: (row, column, index) => {
+                    render: (text, record, index) => {
                         return (
                             <span>
-                                <Button type="text" icon="edit" onClick={this.handleEdit.bind(this,index)}>编辑</Button>
-                                <Button type="text" icon="delete2" className={styles.red} onClick={this.handleDel.bind(this,index)}>删除</Button>
+                                <Button type="link" size="small" icon="edit" onClick={this.handleEdit.bind(this,index)}>编辑</Button>
+                                <Button type="link" size="small" icon="delete" className={styles.red} onClick={this.handleDel.bind(this,index)}>删除</Button>
                             </span>
                         )
                     }
@@ -55,24 +54,24 @@ class Tables extends Component{
             <div>
                 <div className="crumbs">
                     <Breadcrumb separator="/">
-                        <Breadcrumb.Item><i className="el-icon-lx-cascades"></i> 基础表格</Breadcrumb.Item>
+                        <Breadcrumb.Item><IconFont type="anticon-lx-cascades" /> 基础表格</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                 <div className="container">
                     <div className={styles.handleBox}>
                         <Button type="primary" icon="delete" className={`${styles.handleDle} ${styles.mr10}`}>批量删除</Button>
                         <Select
-                            value={this.state.screenName} 
                             placeholder="筛选省份" 
-                            clearable={true}
+                            allowClear={true}
                             className={`${styles.handleSelect} ${styles.mr10}`}
                             onChange={this.handleChangeSelect.bind(this)}
                         >
-                            <Select.Option key="0" label="请选择" value=""></Select.Option>
-                            <Select.Option key="1" label="广东省" value="广东省"></Select.Option>
-                            <Select.Option key="2" label="湖南省" value="湖南省"></Select.Option>
+                            
+                            <Select.Option value="广东省">广东省</Select.Option>
+                            <Select.Option value="湖南省">湖南省</Select.Option>
                         </Select>
                         <Input 
+                            value={this.state.screenName} 
                             placeholder="筛选关键词"
                             className={`${styles.handleInput} ${styles.mr10}`}
                             onChange={this.handleChangeInput.bind(this)}
@@ -82,20 +81,19 @@ class Tables extends Component{
                     <Table
                         style={{width: '100%'}}
                         columns={this.state.columns}
-                        data={this.state.tableList}
-                        border={true}
-                        onSelectChange={(selection) => { console.log(selection) }}
-                        onSelectAll={(selection) => { console.log(selection) }}
+                        dataSource={this.state.tableList}
+                        bordered
+                        rowKey="id"
+                        rowSelection={{
+                            columnWidth: '50px',
+                            onSelectAll: (selection) => { console.log(selection) }
+                        }}
+                        pagination={{
+                            total: 50,
+                            onChange: () => {this.getData()}
+                        }}
+                        size="middle"
                     />
-                    <div className="pagination">
-                        <Pagination
-                            layout="prev, pager, next"
-                            total={50}
-                            pageSize={10}
-                            small={true}
-                            onCurrentChange={this.handlePages.bind(this)}
-                        />
-                    </div>
                 </div>
                 <DeleteDialog 
                     visible={this.state.delVisible}
@@ -122,8 +120,9 @@ class Tables extends Component{
         }).then(res => {
             this.setState({
                 data: res.list
+            }, () => {
+                this.filterData();
             })
-            this.filterData();
         })
     }
     // 筛选列表数据
@@ -163,13 +162,12 @@ class Tables extends Component{
         data.splice(this.state.idx, 1);
         this.setState({
             delVisible: false,
-            data: data,
+            data,
             idx: -1
+        }, () => {
+            this.filterData();
+            message.success('删除成功');
         })
-        Message({
-            message: '删除成功',
-            type: 'success'
-        });
     }
     // 编辑修改当前行
     editRow(param){
@@ -177,13 +175,12 @@ class Tables extends Component{
         data[this.state.idx] = param;
         this.setState({
             editVisible: false,
-            data: data,
+            data,
             idx: -1
+        }, () => {
+            this.filterData();
+            message.success('修改成功');
         })
-        Message({
-            message: '修改成功',
-            type: 'success'
-        });
     }
     // 切换页面
     handlePages(e){
@@ -192,14 +189,13 @@ class Tables extends Component{
     // 筛选省份
     handleChangeSelect(e){
         this.setState({
-            screenAddress: e
+            screenAddress: e || ''
         })
     }
     // 筛选姓名
     handleChangeInput(e){
-        console.log(e);
         this.setState({
-            screenName: e
+            screenName: e.target.value
         })
     }
 }

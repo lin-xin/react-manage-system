@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'element-theme-default';
 import {AppRoutes} from './router';
 import * as serviceWorker from './serviceWorker';
 import './assets/css/common.css';

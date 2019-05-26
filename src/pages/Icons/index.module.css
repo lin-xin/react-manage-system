@@ -3,11 +3,12 @@
     display: flex;
     align-items: center;
 }
+.exampleP span{
+    margin-left: 20px;
+}
 .searchBox{
     text-align: center;
-    margin-top: 10px;
-}
-.search{
+    margin: 10px auto;
     width: 300px;
 }
 

@@ -1,48 +1,45 @@
-import React, {Component} from 'react';
-import { Button, Input, Dialog, Form } from 'element-react';
+import React, { Component } from 'react';
+import { Input, Modal, Form } from 'antd';
 
-class EditDialog extends Component{
+class EditDialog extends Component {
     state = {
-        from: null
+        form: {
+            name: '',
+            address: ''
+        }
     }
-    render(){
+    render() {
         return (
-            <Dialog
+            <Modal
                 title="编辑"
-                visible={ this.props.visible }
-                onCancel={ () => { this.props.onCancel() }}
+                visible={this.props.visible}
+                onCancel={() => { this.props.onCancel() }}
+                onOk={() => { this.props.onSure(this.state.form) }}
             >
-                <Dialog.Body>
-                {
-                    this.state.form &&
-                    <Form model={this.state.form}>
-                        <Form.Item label="姓名" labelWidth="120">
-                            <Input value={this.state.form.name} onChange={this.handleChange.bind(this, 'name')}></Input>
-                        </Form.Item>
-                        <Form.Item label="地址" labelWidth="120">
-                            <Input value={this.state.form.address} onChange={this.handleChange.bind(this, 'address')}></Input>
-                        </Form.Item>
-                    </Form>
-                }
-                </Dialog.Body>
-
-                <Dialog.Footer className="dialog-footer">
-                <Button onClick={ () => { this.props.onCancel() }}>取 消</Button>
-                <Button type="primary" onClick={ () => { this.props.onSure(this.state.form)} }>确 定</Button>
-                </Dialog.Footer>
-            </Dialog>
+                <Form labelCol={{ span: 2 }} wrapperCol={{ span: 20 }}>
+                    <Form.Item label="姓名">
+                        <Input value={this.state.form.name} onChange={this.handleChange.bind(this, 'name')} />
+                    </Form.Item>
+                    <Form.Item label="地址">
+                        <Input value={this.state.form.address} onChange={this.handleChange.bind(this, 'address')} />
+                    </Form.Item>
+                </Form>
+            </Modal>
         )
     }
-    componentWillReceiveProps(nextProps){
-        if(nextProps.form !== this.state.form){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.form) {
             this.setState({
-                form: nextProps.form
+                form: {
+                    name: nextProps.form.name,
+                    address: nextProps.form.address
+                }
             })
         }
     }
-    handleChange(param, e){
+    handleChange(param, e) {
         const form = {...this.state.form};
-        form[param] = e;
+        form[param] = e.target.value;
         this.setState({
             form
         })

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Dialog } from 'element-react';
+import { Modal } from 'antd';
 
 const delDialogCnt = {
     fontSize: '16px',
@@ -9,21 +9,15 @@ const delDialogCnt = {
 class DeleteDialog extends Component{
     render(){
         return (
-            <Dialog
+            <Modal
                 title="提示"
-                size="tiny"
                 visible={ this.props.visible }
+                width={400}
                 onCancel={ () => { this.props.onCancel() }}
-                lockScroll={ false }
+                onOk={ () => {this.props.onSure()} }
             >
-                <Dialog.Body>
-                    <div className={delDialogCnt}>删除不可恢复，是否确定删除？</div>
-                </Dialog.Body>
-                <Dialog.Footer className="dialog-footer">
-                    <Button onClick={ () => { this.props.onCancel() }}>取消</Button>
-                    <Button type="primary" onClick={ () => {this.props.onSure()} }>确定</Button>
-                </Dialog.Footer>
-            </Dialog>
+                <div style={delDialogCnt}>删除不可恢复，是否确定删除？</div>
+            </Modal>
         )
     }
 }

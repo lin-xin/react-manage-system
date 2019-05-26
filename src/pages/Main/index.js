@@ -1,22 +1,35 @@
 import React, {Component} from 'react';
+import { Layout } from 'antd';
 import Header from '../../components/Header/index';
 import Sidebar from '../../components/Sidebar/index';
 import { MainRoutes } from '../../router';
 import styles from './index.module.css';
 
 class Main extends Component{
+    state = {
+        collapsed: false
+    }
     render(){
         return (
             <div className={styles.main}>
-                <Header />
-                <div className={styles.mainContent}>
-                    <Sidebar />
-                    <div className={styles.mainRight}>
+                <Header collapse={this.state.collapsed} onCollapse={() => this.onCollapse.bind(this)}/>
+                <Layout className={styles.mainContent}>
+                    <Layout.Sider collapsed={this.state.collapsed}>
+                        <Sidebar collapse={this.state.collapsed} />
+                    </Layout.Sider>
+                    <Layout.Content className={styles.mainRight}>
                         <MainRoutes />
-                    </div>
-                </div>
+                    </Layout.Content>
+                </Layout>
             </div>
         )
+    }
+    onCollapse(){
+        const collapsed = this.state.collapsed;
+        console.log(collapsed);
+        this.setState({
+            collapsed: !collapsed
+        })
     }
 }
 
