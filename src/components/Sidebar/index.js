@@ -9,12 +9,11 @@ class Sidebar extends Component {
     render() {
         const { history } = this.props;
         return (
-            <div className={this.props.collapse ? 'sidebar sidebar-collapse' : 'sidebar'}>
+            <div className="sidebar">
                 <Menu 
                     defaultSelectedKeys={[history.location.pathname.replace('/main/','')]}
                     theme="dark"
                     mode="inline"
-                    inlineCollapsed={this.props.collapse}
                     onClick={this.onMenuSelect.bind(this)}
                 >
                 {

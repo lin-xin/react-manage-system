@@ -3,6 +3,7 @@ import { Card, Progress, Row, Col } from 'antd';
 import DashboardTodo from './todo.js';
 import IconFont from '../../components/IconFont';
 import SCharts from '../../components/Schart';
+import Events from '../../components/Events';
 import styles from './index.module.css';
 
 class Dashboard extends Component{
@@ -53,6 +54,12 @@ class Dashboard extends Component{
             bottomPadding: 30,
             topPadding: 30
         }
+    }
+    componentDidMount(){
+        Events.on('collapse', this.handleRenderChart);
+    }
+    componentWillUnmount(){
+        Events.off('collapse', this.handleRenderChart);
     }
     render(){
         return (
@@ -138,6 +145,12 @@ class Dashboard extends Component{
                 </Row>
             </div>
         )
+    }
+    handleRenderChart = () => {
+        setTimeout(() => {
+            this.bar.handleInitChart();
+            this.line.handleInitChart();
+        }, 200)
     }
 }
 

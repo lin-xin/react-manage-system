@@ -6,6 +6,7 @@
     "antd": "^3.18.2",
     "babel-plugin-import": "^1.11.2",
     "customize-cra": "^0.2.12",
+    "events": "^3.0.0",
     "http-proxy-middleware": "^0.19.1",
     "react": "^16.8.6",
     "react-app-rewired": "^2.1.3",
