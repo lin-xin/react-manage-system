@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Tooltip, Dropdown, Menu, Icon } from 'antd';
+import { Tooltip, Dropdown, Menu, Icon, Avatar } from 'antd';
 import IconFont from '../IconFont';
 import Events from '../Events';
 import styles from './index.module.css';
@@ -35,7 +35,8 @@ class Header extends Component {
                                 </div>
                             </Link>
                         </Tooltip>
-                        <div className={styles.userAvator}><img src={require('../../assets/img/img.jpg')} alt=""/></div>
+                        {/* 用户头像 */}
+                        <Avatar className={styles.userAvator} src={require('../../assets/img/img.jpg')} />
                         {/* 用户名下拉菜单 */}
                         <Dropdown className={styles.userName} trigger={["click"]} overlay={(
                             <Menu onClick={this.handleDropdown.bind(this)}>

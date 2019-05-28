@@ -62,12 +62,8 @@
 }
 .userAvator{
     margin-left: 20px;
-}
-.userAvator img{
-    display: block;
     width:40px;
     height:40px;
-    border-radius: 50%;
 }
 .elDropdownLink{
     color: #fff;
