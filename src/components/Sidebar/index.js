@@ -11,7 +11,7 @@ class Sidebar extends Component {
         return (
             <div className="sidebar">
                 <Menu 
-                    defaultSelectedKeys={[history.location.pathname.replace('/main/','')]}
+                    defaultSelectedKeys={[history.location.pathname]}
                     theme="dark"
                     mode="inline"
                     onClick={this.onMenuSelect.bind(this)}

@@ -1,42 +1,42 @@
 export default [
     {
         icon: 'anticon-lx-home',
-        index: 'dashboard',
+        index: '/main/dashboard',
         title: 'Dashboard'
     },
     {
         icon: 'anticon-lx-cascades',
-        index: 'tables',
+        index: '/main/tables',
         title: '基础表格'
     },
     {
         icon: 'anticon-lx-emoji',
-        index: 'icons',
+        index: '/main/icons',
         title: '自定义图标'
     },
     {
         icon: 'anticon-lx-copy',
-        index: 'tabs',
+        index: '/main/tabs',
         title: 'tab选项卡'
     },
     {
         icon: 'anticon-lx-calendar',
-        index: '5',
+        index: '/main/5',
         title: '三级菜单示例',
         subs: [
             {
-                index: 'forms',
+                index: '/main/forms',
                 title: '基础表单'
             },
             {
-                index: 'upload',
+                index: '/main/upload',
                 title: '上传组件'
             }
         ]
     },
     {
         icon: 'anticon-lx-rank',
-        index: 'charts',
+        index: '/main/charts',
         title: 'schart图表'
     }
 ]
