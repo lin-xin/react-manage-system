@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Breadcrumb } from 'antd';
+import { Breadcrumb } from 'antd';
 import IconFont from '../../components/IconFont';
 
 class Permission extends Component{

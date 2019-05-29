@@ -1,6 +1,6 @@
-import React, { lazy, Suspense, Component } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { checkIsAdmin } from './utils/utils';
+import { checkIsAdmin, checkAuth } from './utils/utils';
 const Login = lazy(() => import('./pages/Login/index'));
 const Main = lazy(() => import('./pages/Main/index'));
 const Icons = lazy(() => import('./pages/Icons/index'));
@@ -20,7 +20,7 @@ export const AppRoutes = () => {
                 <Switch>
                     <Route exact path="/" component={Login} />
                     <Route path="/login" component={Login} />
-                    <Route path="/main" component={Main} />
+                    <AuthRoute path="/main" component={Main} />
                     <Route path="/error/:code" component={ErrorRoute} />
                     <Route component={ErrorRoute} />
                 </Switch>
@@ -56,6 +56,19 @@ const AdminRoute = ({ component: Component, ...rest }) => {
             render={props =>
                 // checkIsAdmin 方法里做了权限校验
                 checkIsAdmin() ? <Component {...props} /> : <Redirect to="/error/403" />
+            }
+        />
+    );
+}
+
+// 路由登录鉴权
+const AuthRoute = ({ component: Component, ...rest }) => {
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                // checkAuth 方法判断是否已登录
+                checkAuth() ? <Component {...props} /> : <Redirect to="/login" />
             }
         />
     );

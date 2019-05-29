@@ -6,3 +6,8 @@ export const request = (url, init) => {
 export const checkIsAdmin = () => {
     return localStorage.getItem('ms_username') === 'admin';
 }
+
+// 登录校验，这里简单判断是否有localstorage则表示是否已登录
+export const checkAuth = () => {
+    return !!localStorage.getItem('ms_username');
+}
