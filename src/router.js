@@ -9,6 +9,7 @@ const Tabs = lazy(() => import('./pages/Tabs/index'));
 const Forms = lazy(() => import('./pages/Forms/index'));
 const Upload = lazy(() => import('./pages/Forms/upload'));
 const Charts = lazy(() => import('./pages/Charts/index'));
+const ErrorRoute = lazy(() => import('./pages/Error/index'));
 
 export const AppRoutes = () => {
     return (
@@ -18,6 +19,8 @@ export const AppRoutes = () => {
                     <Route exact path="/" component={Login} />
                     <Route path="/login" component={Login} />
                     <Route path="/main" component={Main} />
+                    <Route path="/error/:code" component={ErrorRoute} />
+                    <Route component={ErrorRoute} />
                 </Switch>
             </Suspense>
         </Router>
@@ -36,6 +39,7 @@ export const MainRoutes = () => {
                 <Route exact path="/main/forms" component={Forms} />
                 <Route exact path="/main/upload" component={Upload} />
                 <Route exact path="/main/charts" component={Charts} />
+                <Route component={ErrorRoute} />
             </Switch>
         </Suspense>
     )

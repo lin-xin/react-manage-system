@@ -21,7 +21,7 @@ export default [
     },
     {
         icon: 'anticon-lx-calendar',
-        index: '/main/5',
+        index: '5',
         title: '三级菜单示例',
         subs: [
             {
@@ -38,5 +38,16 @@ export default [
         icon: 'anticon-lx-rank',
         index: '/main/charts',
         title: 'schart图表'
+    },
+    {
+        icon: 'anticon-lx-warn',
+        index: '7',
+        title: '错误处理',
+        subs: [
+            {
+                index: '/error/404',
+                title: '404页面'
+            }
+        ]
     }
 ]
