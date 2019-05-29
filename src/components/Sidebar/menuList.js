@@ -45,6 +45,10 @@ export default [
         title: '错误处理',
         subs: [
             {
+                index: '/main/permission',
+                title: '权限测试'
+            },
+            {
                 index: '/error/404',
                 title: '404页面'
             }
