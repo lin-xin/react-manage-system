@@ -13,6 +13,7 @@
     "react-cropper": "^1.2.0",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.4",
+    "react-intl": "^2.9.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "schart.js": "^2.0.1"

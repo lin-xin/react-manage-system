@@ -12,6 +12,7 @@ const Upload = lazy(() => import('./pages/Forms/upload'));
 const Charts = lazy(() => import('./pages/Charts/index'));
 const ErrorRoute = lazy(() => import('./pages/Error/index'));
 const Permission = lazy(() => import('./pages/Permission/index'));
+const Locale = lazy(() => import('./pages/Locale/index'));
 
 export const AppRoutes = () => {
     return (
@@ -42,6 +43,7 @@ export const MainRoutes = () => {
                 <Route exact path="/main/upload" component={Upload} />
                 <Route exact path="/main/charts" component={Charts} />
                 <AdminRoute exact path="/main/permission" component={Permission}/>
+                <Route exact path="/main/i18n" component={Locale} />
                 <Route component={ErrorRoute} />
             </Switch>
         </Suspense>

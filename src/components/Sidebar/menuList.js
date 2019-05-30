@@ -40,6 +40,11 @@ export default [
         title: 'schart图表'
     },
     {
+        icon: 'anticon-lx-global',
+        index: '/main/i18n',
+        title: '国际化'
+    },
+    {
         icon: 'anticon-lx-warn',
         index: '7',
         title: '错误处理',
