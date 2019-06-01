@@ -114,7 +114,8 @@ class Tables extends Component{
     }
     // 获取列表数据
     getData(idx){
-        request('/ms/table/list', {
+        const url = process.env.NODE_ENV === 'development' ? '/ms/table/list' : 'http://blog.gdfengshuo.com/example/work/static/vuetable.json';
+        request(url, {
             method: 'post',
             body: JSON.stringify({page: idx||1})
         }).then(res => {
