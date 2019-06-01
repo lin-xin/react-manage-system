@@ -1,22 +1,22 @@
 export default [
     {
         icon: 'anticon-lx-home',
-        index: 'dashboard',
+        index: '/main/dashboard',
         title: 'Dashboard'
     },
     {
         icon: 'anticon-lx-cascades',
-        index: 'tables',
+        index: '/main/tables',
         title: '基础表格'
     },
     {
         icon: 'anticon-lx-emoji',
-        index: 'icons',
+        index: '/main/icons',
         title: '自定义图标'
     },
     {
         icon: 'anticon-lx-copy',
-        index: 'tabs',
+        index: '/main/tabs',
         title: 'tab选项卡'
     },
     {
@@ -25,18 +25,38 @@ export default [
         title: '三级菜单示例',
         subs: [
             {
-                index: 'forms',
+                index: '/main/forms',
                 title: '基础表单'
             },
             {
-                index: 'upload',
+                index: '/main/upload',
                 title: '上传组件'
             }
         ]
     },
     {
         icon: 'anticon-lx-rank',
-        index: 'charts',
+        index: '/main/charts',
         title: 'schart图表'
+    },
+    {
+        icon: 'anticon-lx-global',
+        index: '/main/i18n',
+        title: '国际化'
+    },
+    {
+        icon: 'anticon-lx-warn',
+        index: '7',
+        title: '错误处理',
+        subs: [
+            {
+                index: '/main/permission',
+                title: '权限测试'
+            },
+            {
+                index: '/error/404',
+                title: '404页面'
+            }
+        ]
     }
 ]

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Tooltip, Dropdown, Menu, Icon } from 'antd';
+import { Tooltip, Dropdown, Menu, Icon, Avatar } from 'antd';
 import IconFont from '../IconFont';
+import Events from '../Events';
 import styles from './index.module.css';
 
 class Header extends Component {
@@ -15,7 +16,7 @@ class Header extends Component {
     render() {
         return (
             <div className={styles.header}>
-                <div className={styles.collapseBtn} onClick={this.props.onCollapse()}>
+                <div className={styles.collapseBtn} onClick={this.onCollapse}>
                     <Icon type="appstore" />
                 </div>
                 <div className={styles.logo}>React后台管理系统</div>
@@ -34,7 +35,8 @@ class Header extends Component {
                                 </div>
                             </Link>
                         </Tooltip>
-                        <div className={styles.userAvator}><img src={require('../../assets/img/img.jpg')} alt=""/></div>
+                        {/* 用户头像 */}
+                        <Avatar className={styles.userAvator} src={require('../../assets/img/img.jpg')} />
                         {/* 用户名下拉菜单 */}
                         <Dropdown className={styles.userName} trigger={["click"]} overlay={(
                             <Menu onClick={this.handleDropdown.bind(this)}>
@@ -63,6 +65,11 @@ class Header extends Component {
             </div>
         )
     }
+    // 折叠展开侧边栏
+    onCollapse(){
+        Events.emit('collapse');
+    }
+    // 设置全屏
     setFullScreen() {
         const fullscreen = this.state.fullscreen;
         const element = document.documentElement;
@@ -92,8 +99,8 @@ class Header extends Component {
             fullscreen: !fullscreen
         })
     }
+    // 用户名下拉菜单操作
     handleDropdown({key}) {
-        console.log(key);
         if (key === '2') {
             localStorage.removeItem('ms_username');
             this.props.history.push('/login');

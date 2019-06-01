@@ -3,19 +3,26 @@ import { Layout } from 'antd';
 import Header from '../../components/Header/index';
 import Sidebar from '../../components/Sidebar/index';
 import { MainRoutes } from '../../router';
+import Events from '../../components/Events';
 import styles from './index.module.css';
 
 class Main extends Component{
     state = {
         collapsed: false
     }
+    componentDidMount(){
+        Events.on('collapse', this.onCollapse);
+    }
+    componentWillUnmount(){
+        Events.off('collapse', this.onCollapse);
+    }
     render(){
         return (
             <div className={styles.main}>
-                <Header collapse={this.state.collapsed} onCollapse={() => this.onCollapse.bind(this)}/>
+                <Header />
                 <Layout className={styles.mainContent}>
                     <Layout.Sider collapsed={this.state.collapsed}>
-                        <Sidebar collapse={this.state.collapsed} />
+                        <Sidebar />
                     </Layout.Sider>
                     <Layout.Content className={styles.mainRight}>
                         <MainRoutes />
@@ -24,9 +31,8 @@ class Main extends Component{
             </div>
         )
     }
-    onCollapse(){
+    onCollapse = () => {
         const collapsed = this.state.collapsed;
-        console.log(collapsed);
         this.setState({
             collapsed: !collapsed
         })
