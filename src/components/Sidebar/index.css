@@ -1,18 +1,37 @@
-.sidebar{
+.sidebar {
     /* width: 250px; */
     height: 100%;
     overflow-y: scroll;
 }
-.sidebar-collapse{
+
+.sidabar-header {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    height: 70px;
+    color: #fff;
+    font-size: 22px;
+    background: #002140;
+    word-break: keep-all;
+}
+
+.logo {
+    height: 50px;
+}
+
+.sidebar-collapse {
     width: auto;
 }
-.sidebar::-webkit-scrollbar{
+
+.sidebar::-webkit-scrollbar {
     width: 0;
 }
-.sidebar > ul {
+
+.sidebar>ul {
     height: 100%;
     border-radius: 0;
 }
-.ant-menu-item .anticon{
+
+.ant-menu-item .anticon {
     font-size: 16px;
 }
