@@ -109,7 +109,7 @@ class Header extends Component {
 	handleDropdown({ key }) {
 		switch (key) {
 			case "0":
-				window.open("http://blog.gdfengshuo.com/about/", "_blank");
+				window.open("https://lin-xin.github.io/about/", "_blank");
 				break;
 			case "1":
 				window.open("https://github.com/lin-xin/react-manage-system", "_blank");
