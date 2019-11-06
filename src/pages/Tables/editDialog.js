@@ -3,16 +3,13 @@ import { Input, Modal, Form } from 'antd';
 
 class EditDialog extends Component {
     state = {
-        form: {
-            name: '',
-            address: ''
-        }
+        form: this.props.form
     }
     render() {
         return (
-            <Modal
+            this.props.visible && <Modal
                 title="编辑"
-                visible={this.props.visible}
+                visible={true}
                 onCancel={() => { this.props.onCancel() }}
                 onOk={() => { this.props.onSure(this.state.form) }}
             >
@@ -26,16 +23,6 @@ class EditDialog extends Component {
                 </Form>
             </Modal>
         )
-    }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.form) {
-            this.setState({
-                form: {
-                    name: nextProps.form.name,
-                    address: nextProps.form.address
-                }
-            })
-        }
     }
     handleChange(param, e) {
         const form = {...this.state.form};

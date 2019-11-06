@@ -11,6 +11,7 @@ class Tables extends Component {
 		super(props);
 		this.state = {
 			idx: -1,
+			editId: -1,
 			editVisible: false,
 			delVisible: false,
 			screenAddress: "",
@@ -66,7 +67,7 @@ class Tables extends Component {
 									type="link"
 									size="small"
 									icon="edit"
-									onClick={this.handleEdit.bind(this, index)}
+									onClick={this.handleEdit.bind(this, index, record.id)}
 								>
 									编辑
 								</Button>
@@ -87,6 +88,7 @@ class Tables extends Component {
 			data: [],
 			tableList: []
 		};
+		this.getData();
 	}
 	render() {
 		return (
@@ -156,6 +158,7 @@ class Tables extends Component {
 				<EditDialog
 					visible={this.state.editVisible}
 					form={this.state.data[this.state.idx]}
+					key={this.state.editId}
 					onCancel={() => {
 						this.handleCancel();
 					}}
@@ -166,15 +169,11 @@ class Tables extends Component {
 			</div>
 		);
 	}
-	componentWillMount() {
-		this.getData();
-	}
 	// 获取列表数据
 	getData(idx) {
-		const url = "https://www.easy-mock.com/mock/592501a391470c0ac1fab128/ms/table/list";
+		const url = "./table.json";
 		request(url, {
-			method: "post",
-			body: JSON.stringify({ page: idx || 1 })
+			method: "get"
 		}).then(res => {
 			this.setState(
 				{
@@ -196,9 +195,10 @@ class Tables extends Component {
 		});
 	}
 	// 触发编辑操作
-	handleEdit(index) {
+	handleEdit(index, id) {
 		this.setState({
 			idx: index,
+			editId: id,
 			editVisible: true
 		});
 	}
