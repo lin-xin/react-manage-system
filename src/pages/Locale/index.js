@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // antd 组件国际化依赖
-import { LocaleProvider, Breadcrumb, Button, DatePicker, TimePicker, Empty } from 'antd';
+import { ConfigProvider, Breadcrumb, Button, DatePicker, TimePicker, Empty } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
@@ -48,13 +48,13 @@ class Locale extends Component{
                         />
                         <FormattedMessage id="title3" tagName="h2"/>
                         {/* antd 组件的国际化，所有组件最外层套上 LocaleProvider 组件 */}
-                        <LocaleProvider locale={this.state.localeAntd}>
+                        <ConfigProvider  locale={this.state.localeAntd}>
                             <div>
                                 <Empty />
                                 <DatePicker />
                                 <TimePicker />
                             </div>
-                        </LocaleProvider>
+                        </ConfigProvider>
                     </div>
                 </div>
             </IntlProvider>

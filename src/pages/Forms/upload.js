@@ -25,17 +25,13 @@ const props = {
 class BaseUpload extends Component {
     constructor(props) {
         super(props);
+        const defaultSrc = require('../../assets/img/img.jpg');
         this.state = {
             dialogVisible: false,
-            defaultSrc: require('../../assets/img/img.jpg'),
+            defaultSrc,
             imgSrc: '',
-            cropImg: ''
+            cropImg: defaultSrc
         };
-    }
-    componentWillMount() {
-        this.setState({
-            cropImg: this.state.defaultSrc
-        })
     }
     render() {
         return (

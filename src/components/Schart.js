@@ -9,8 +9,7 @@ class SCharts extends Component{
         return <canvas id={this.props.canvasId}></canvas>
     }
     handleInitChart(){
-        this.props.options.autoWidth = true;
-        new sChart(this.props.canvasId, this.props.type, this.props.data, this.props.options);
+        new sChart(this.props.canvasId, this.props.options);
     }
 }
 

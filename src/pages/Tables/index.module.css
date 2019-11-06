@@ -1,7 +1,7 @@
 .handleBox {
     display: flex;
     margin-bottom: 20px;
-    
+
 }
 
 .handleSelect {
@@ -12,13 +12,23 @@
     width: 300px;
     display: inline-block;
 }
-.table{
+
+.table {
     width: 100%;
     font-size: 14px;
 }
-.red{
+
+.red {
     color: #ff0000;
 }
-.mr10{
+
+.mr10 {
     margin-right: 10px;
+}
+
+.tableThumb {
+    display: block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
 }
