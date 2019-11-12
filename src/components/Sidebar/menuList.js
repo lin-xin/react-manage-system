@@ -39,6 +39,10 @@ export default [
 					{
 						index: '/main/editor',
 						title: '富文本编辑器'
+					},
+					{
+						index: '/main/markdown',
+						title: 'markdown编辑器'
 					}
 				]
 			}

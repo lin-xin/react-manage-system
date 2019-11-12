@@ -18,7 +18,7 @@
 -   [x] 表单
 -   [x] 图表 :bar_chart:
 -   [x] 富文本编辑器
--   [ ] markdown 编辑器
+-   [x] markdown 编辑器
 -   [x] 图片拖拽/裁剪上传
 -   [ ] 支持切换主题色 :sparkles:
 -   [ ] 列表拖拽排序
