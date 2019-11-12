@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Button, message } from 'antd';
 import IconFont from '../../components/IconFont';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
+import './index.modules.css';
 
 class Editor extends Component {
 	constructor() {
@@ -26,8 +27,25 @@ class Editor extends Component {
 				<div className="container">
 					<BraftEditor value={editorState} />
 				</div>
+				<div className="btn-footer">
+					<Button type="primary" onClick={this.handleSubmit.bind(this)}>
+						提交内容
+					</Button>
+					<Button className="ml20" onClick={this.handleClear.bind(this)}>
+						清空内容
+					</Button>
+				</div>
 			</div>
 		);
+	}
+	handleSubmit() {
+		console.log(this.state.editorState.toHTML());
+		message.success('提交成功');
+	}
+	handleClear() {
+		this.setState({
+			editorState: BraftEditor.createEditorState(null)
+		});
 	}
 }
 
