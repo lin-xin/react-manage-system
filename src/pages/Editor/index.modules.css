@@ -1,11 +1,3 @@
-.container {
-    padding: 0;
-}
-
-.btn-footer {
-    margin-top: 20px;
-}
-
-.ml20 {
-    margin-left: 20px;
+.bf-editor {
+    border: 1px solid #ddd;
 }

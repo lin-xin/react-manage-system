@@ -3,17 +3,13 @@ import { Breadcrumb, Button, message } from 'antd';
 import IconFont from '../../components/IconFont';
 import MdEditor from 'react-markdown-editor-lite';
 import MarkdownIt from 'markdown-it';
-import './index.modules.css';
 
 const mdParser = new MarkdownIt();
 
 class Markdown extends Component {
-	constructor() {
-		super();
-		this.state = {
-			mdState: '# 前言'
-		};
-	}
+	state = {
+		mdState: '# 前言'
+	};
 	render() {
 		const { mdState } = this.state;
 		return (
@@ -23,7 +19,7 @@ class Markdown extends Component {
 						<Breadcrumb.Item>
 							<IconFont type="anticon-lx-calendar" /> 表单相关
 						</Breadcrumb.Item>
-						<Breadcrumb.Item> 富文本编辑器</Breadcrumb.Item>
+						<Breadcrumb.Item> Markdown编辑器</Breadcrumb.Item>
 					</Breadcrumb>
 				</div>
 				<div className="container">
@@ -34,7 +30,7 @@ class Markdown extends Component {
 						renderHTML={text => mdParser.render(text)}
 						onChange={this.handleEditorChange}
 					/>
-					<div className="btn-footer">
+					<div className="mt20">
 						<Button type="primary" onClick={this.handleSubmit}>
 							提交内容
 						</Button>

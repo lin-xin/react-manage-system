@@ -25,15 +25,15 @@ class Editor extends Component {
 					</Breadcrumb>
 				</div>
 				<div className="container">
-					<BraftEditor value={editorState} onChange={this.handleEditorChange} />
-				</div>
-				<div className="btn-footer">
-					<Button type="primary" onClick={this.handleSubmit}>
-						提交内容
-					</Button>
-					<Button className="ml20" onClick={this.handleClear}>
-						清空内容
-					</Button>
+					<BraftEditor className="bf-editor" value={editorState} onChange={this.handleEditorChange} />
+					<div className="mt20">
+						<Button type="primary" onClick={this.handleSubmit}>
+							提交内容
+						</Button>
+						<Button className="ml20" onClick={this.handleClear}>
+							清空内容
+						</Button>
+					</div>
 				</div>
 			</div>
 		);
