@@ -3,7 +3,6 @@ import { Breadcrumb, Button, message } from 'antd';
 import IconFont from '../../components/IconFont';
 import MdEditor from 'react-markdown-editor-lite';
 import MarkdownIt from 'markdown-it';
-import './index.modules.css';
 
 const mdParser = new MarkdownIt();
 
@@ -34,7 +33,7 @@ class Markdown extends Component {
 						renderHTML={text => mdParser.render(text)}
 						onChange={this.handleEditorChange}
 					/>
-					<div className="btn-footer">
+					<div className="mt20">
 						<Button type="primary" onClick={this.handleSubmit}>
 							提交内容
 						</Button>
