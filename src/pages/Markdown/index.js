@@ -7,12 +7,9 @@ import MarkdownIt from 'markdown-it';
 const mdParser = new MarkdownIt();
 
 class Markdown extends Component {
-	constructor() {
-		super();
-		this.state = {
-			mdState: '# 前言'
-		};
-	}
+	state = {
+		mdState: '# 前言'
+	};
 	render() {
 		const { mdState } = this.state;
 		return (
@@ -22,7 +19,7 @@ class Markdown extends Component {
 						<Breadcrumb.Item>
 							<IconFont type="anticon-lx-calendar" /> 表单相关
 						</Breadcrumb.Item>
-						<Breadcrumb.Item> 富文本编辑器</Breadcrumb.Item>
+						<Breadcrumb.Item> Markdown编辑器</Breadcrumb.Item>
 					</Breadcrumb>
 				</div>
 				<div className="container">

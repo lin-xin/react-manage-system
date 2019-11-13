@@ -16,7 +16,7 @@
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.4",
     "react-intl": "^2.9.0",
-    "react-markdown-editor-lite": "^0.4.6",
+    "react-markdown-editor-lite": "^0.4.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "schart.js": "^3.0.0"
