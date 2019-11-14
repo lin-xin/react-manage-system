@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { Menu } from "antd";
-import menuList from "./menuList";
-import IconFont from "../IconFont";
-import "./index.css";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Menu } from 'antd';
+import menuList from './menuList';
+import IconFont from '../IconFont';
+import './index.css';
 
 class Sidebar extends Component {
 	render() {
@@ -11,14 +11,14 @@ class Sidebar extends Component {
 		return (
 			<div className="sidebar">
 				<div className="sidabar-header">
-					<img className="logo" src={require("../../assets/img/logo.svg")} alt="" />
+					<img className="logo" src={require('../../assets/img/logo.svg')} alt="" />
 					{!collapsed && <span>管理系统</span>}
 				</div>
 				<Menu
 					defaultSelectedKeys={[history.location.pathname]}
 					theme="dark"
 					mode="inline"
-					onClick={this.onMenuSelect.bind(this)}
+					onClick={this.onMenuSelect}
 				>
 					{// 遍历一级菜单
 					menuList.map(items => {
@@ -65,9 +65,9 @@ class Sidebar extends Component {
 			</div>
 		);
 	}
-	onMenuSelect(e) {
+	onMenuSelect = e => {
 		this.props.history.push(e.key);
-	}
+	};
 }
 
 export default withRouter(Sidebar);

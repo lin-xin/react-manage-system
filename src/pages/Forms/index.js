@@ -86,7 +86,7 @@ class BaseForms extends Component {
 							})(<Input.TextArea rows={5} />)}
 						</Form.Item>
 						<Form.Item wrapperCol={{ span: 20, offset: 4 }}>
-							<Button type="primary" onClick={this.handleSubmit.bind(this)}>
+							<Button type="primary" onClick={this.handleSubmit}>
 								表单提交
 							</Button>
 						</Form.Item>
@@ -96,7 +96,7 @@ class BaseForms extends Component {
 		);
 	}
 	// 表单提交操作
-	handleSubmit(e) {
+	handleSubmit = e => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
@@ -106,7 +106,7 @@ class BaseForms extends Component {
 				message.error('提交失败！');
 			}
 		});
-	}
+	};
 }
 
 export default Form.create({ name: 'baseform' })(BaseForms);
