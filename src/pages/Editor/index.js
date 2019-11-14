@@ -25,6 +25,12 @@ class Editor extends Component {
 					</Breadcrumb>
 				</div>
 				<div className="container">
+					<div className="plugins-tips">
+						braft-editor：美观易用的React富文本编辑器，基于draft-js开发。 访问地址：
+						<a href="https://github.com/margox/braft-editor" target="_blank" rel="noopener noreferrer">
+							braft-editor
+						</a>
+					</div>
 					<BraftEditor className="bf-editor" value={editorState} onChange={this.handleEditorChange} />
 					<div className="mt20">
 						<Button type="primary" onClick={this.handleSubmit}>

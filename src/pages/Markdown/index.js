@@ -23,6 +23,16 @@ class Markdown extends Component {
 					</Breadcrumb>
 				</div>
 				<div className="container">
+					<div className="plugins-tips">
+						react-markdown-editor-lite：一款轻量的基于React的markdown编辑器。 访问地址：
+						<a
+							href="https://github.com/HarryChen0506/react-markdown-editor-lite"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							react-markdown-editor-lite
+						</a>
+					</div>
 					<MdEditor
 						ref={node => (this.mdEditor = node)}
 						style={{ height: '600px' }}
